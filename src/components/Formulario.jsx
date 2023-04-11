@@ -24,7 +24,7 @@ const InputSubmit = styled.input`
   }
 `;
 
-export const Formulario = () => {
+export const Formulario = ({ setMonedas }) => {
   const [criptos, setCriptos] = useState([]);
   const [error, setError] = useState(false);
 
@@ -61,11 +61,15 @@ export const Formulario = () => {
       return;
     }
     setError(false);
+    setMonedas({
+      moneda,
+      criptomoneda,
+    });
   };
 
   return (
     <>
-    {error && <Error>Todos los campos son obligatorios</Error>}
+      {error && <Error>Todos los campos son obligatorios</Error>}
       <form onSubmit={handleSubmit}>
         <SelectMonedas />
         <SelectCriptomoneda />
